@@ -1,0 +1,20 @@
+{
+	"format": 1,
+	"id": "mxtiy.nitroprofile",
+	"name": "Nitro Profile",
+	"description": "Custom profile backgrounds via UserBG and custom avatars via UserPFP. Enable either or both.",
+	"author": "NoReplyUI5, k1ng_op",
+	"icon": "NitroWheelIcon",
+	"version": "1.0",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
