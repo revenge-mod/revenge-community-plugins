@@ -5,7 +5,7 @@
 	"description": "Show profile badges from other Discord clients and BadgeVault.",
 	"author": "Wolfie <347096063569559553>",
 	"icon": "AwardIcon",
-	"version": "1.0.2",
+	"version": "1.0.0",
 	"dependencies": {
 		"revenge.api": { "version": ">=1 <2" },
 		"discord": { "version": "*" }

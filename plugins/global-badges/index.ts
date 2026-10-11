@@ -18,7 +18,7 @@ type UseBadges = (user: { userId: string } | null) => unknown[]
 
 export default plugin<{ jsonStorage: Settings }>({
 	jsonStorage: { load: true, default: DefaultSettings },
-	start({ cleanup, jsonStorage, logger, plugin }) {
+	start({ cleanup, jsonStorage, plugin }) {
 		if (plugin.startedLate) {
 			plugin.requireReload()
 			return
@@ -57,7 +57,7 @@ export default plugin<{ jsonStorage: Settings }>({
 				const users = parseBadges(await response.json())
 				if (active) store.setUsers(users)
 			} catch (error) {
-				if (active) logger.error(`Failed to load global badges: ${error}`)
+				if (active) plugin.reportError(error)
 			} finally {
 				clearTimeout(timeout)
 				loading = false
@@ -103,24 +103,21 @@ export default plugin<{ jsonStorage: Settings }>({
 			if (custom) return { ...props, ...custom }
 		}
 
-		for (const method of ['jsx', 'jsxs'] as const) {
-			cleanup(
-				before(ReactJSXRuntime, method, args => {
-					const props = badgeProps(args[1])
-					if (props) args[1] = props
-					return args
-				}),
-			)
+		function patchBadgeProps<Args extends [unknown, unknown?, ...unknown[]]>(
+			args: Args,
+		): Args {
+			const props = badgeProps(args[1])
+			if (props) args[1] = props
+			return args
 		}
+
 		cleanup(
-			before(React, 'createElement', args => {
-				const props = badgeProps(args[1])
-				if (props) args[1] = props
-				return args
-			}),
+			before(ReactJSXRuntime, 'jsx', patchBadgeProps),
+			before(ReactJSXRuntime, 'jsxs', patchBadgeProps),
+			before(React, 'createElement', patchBadgeProps),
 		)
 
-		void refresh()
+		refresh()
 		const interval = setInterval(refresh, RefreshInterval)
 		cleanup(() => clearInterval(interval))
 	},
