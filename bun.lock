@@ -12,6 +12,7 @@
       },
       "devDependencies": {
         "@biomejs/biome": "^2.5.15",
+        "@react-native-community/netinfo": "^12.0.1",
         "@shopify/flash-list": "^2.3.3",
         "@swc/core-linux-x64-gnu": "^1.16.18",
         "@types/node": "^26.6.5",
@@ -206,6 +207,8 @@
 
     "@oxc-project/types": ["@oxc-project/types@0.153.0", "", {}, "sha512-jSNrRIyvPVLL5E1z/tS5zLAprosGz/FuI1PWwEOz59j3E4TTTzSpqKb/RDGqJhhW0QHYISGXxq582wGx6T11Tw=="],
 
+    "@react-native-community/netinfo": ["@react-native-community/netinfo@12.0.1", "", { "peerDependencies": { "react": "*", "react-native": ">=0.59" } }, "sha512-P/3caXIvfYSJG8AWJVefukg+ZGRPs+M4Lp3pNJtgcTYoJxCjWrKQGNnCkj/Cz//zWa/avGed0i/wzm0T8vV2IQ=="],
+
     "@react-native/assets-registry": ["@react-native/assets-registry@0.81.6", "", {}, "sha512-nNlJ7mdXFoq/7LMG3eJIncqjgXkpDJak3xO8Lb4yQmFI3XVI1nupPRjlYRY0ham1gLE0F/AWvKFChsKUfF5lOQ=="],
 
     "@react-native/babel-plugin-codegen": ["@react-native/babel-plugin-codegen@0.87.1", "", { "dependencies": { "@babel/traverse": "^7.29.0", "@react-native/codegen": "0.87.1" } }, "sha512-DfnyLAHG7jH4pqeID7ib6AeD6gG8T+KvM3c/w/yEa5ONkfRcHvTC8JMIRdhUqs4ruA+8xbYcNVQzewYRCPm1Xw=="],
@@ -234,7 +237,7 @@
 
     "@revenge-mod/plugin-cli": ["@revenge-mod/plugin-cli@github:revenge-mod/revenge-plugin-cli#05ca261", { "dependencies": { "@swc/core": "^1.16.2", "fflate": "^0.8.3", "rolldown": "^1.2.7" }, "peerDependencies": { "@revenge-mod/types": "git+https://github.com/revenge-mod/revenge-types.git" }, "bin": { "revenge-plugin": "bin/revenge-plugin.js" } }, "revenge-mod-revenge-plugin-cli-05ca261", "sha512-8kEFgvKeaX58a0nTEfwOQXnB/K79+fY7c4fYFhx8YLU9AMv+NvVfgqFPYRumPjYiRg0/rpd2lbLRA09415nSpg=="],
 
-    "@revenge-mod/types": ["@revenge-mod/types@github:revenge-mod/revenge-types#cc44a9e", { "dependencies": { "buffer": "^6.0.3" }, "peerDependencies": { "@gorhom/bottom-sheet": "^5.2.14", "@react-native-clipboard/clipboard": "^1.16.3", "@react-native-community/netinfo": "^12.0.1", "@react-navigation/core": "^7.22.1", "@react-navigation/native": "^7.4.1", "@react-navigation/stack": "^7.11.2", "@shopify/flash-list": "2.3.2", "@types/node": "^26.6.3", "react": "19.2.3", "react-native": "0.86.0", "react-native-gesture-handler": "2.29.0", "react-native-reanimated": "4.6.0", "react-native-safe-area-context": "^5.10.0" }, "optionalPeers": ["@gorhom/bottom-sheet", "@react-native-clipboard/clipboard", "@react-native-community/netinfo", "@react-navigation/core", "@react-navigation/native", "@react-navigation/stack", "@shopify/flash-list", "@types/node", "react-native-safe-area-context"] }, "revenge-mod-revenge-types-cc44a9e", "sha512-eGE8DNpV+MfDaadbUocj71DwDJEXn6U5Ozbxzhm5dmI/IdxDVF0oTIPKv5pnl5bPYJzE31wYmV2RaNt6MtHMkg=="],
+    "@revenge-mod/types": ["@revenge-mod/types@github:revenge-mod/revenge-types#f41a4da", { "dependencies": { "buffer": "^6.0.3" }, "peerDependencies": { "@gorhom/bottom-sheet": "^5.2.14", "@react-native-clipboard/clipboard": "^1.16.3", "@react-native-community/netinfo": "^12.0.1", "@react-navigation/core": "^7.22.1", "@react-navigation/native": "^7.4.1", "@react-navigation/stack": "^7.11.2", "@shopify/flash-list": "2.3.2", "@types/node": "^26.6.3", "react": "19.2.3", "react-native": "0.86.0", "react-native-gesture-handler": "2.29.0", "react-native-reanimated": "4.6.0", "react-native-safe-area-context": "^5.10.0" }, "optionalPeers": ["@gorhom/bottom-sheet", "@react-native-clipboard/clipboard", "@react-native-community/netinfo", "@react-navigation/core", "@react-navigation/native", "@react-navigation/stack", "@shopify/flash-list", "@types/node", "react-native-safe-area-context"] }, "revenge-mod-revenge-types-f41a4da", "sha512-ckbYPVPBE0NuoSwnRtxv2+aNW2GrVNdtwtsmTiLl7xsPNLVW5ts5IG65fRBJkjvwNfTLEGGThl/VmV0XukIWdA=="],
 
     "@rolldown/binding-android-arm-eabi": ["@rolldown/binding-android-arm-eabi@1.2.13", "", { "os": "android", "cpu": "arm" }, "sha512-Vu/NICrgdRvUOeaJZIyB2FP63s6fO/4ud5l8dXmxDx9yDyn+mN0y+gsvsVviSli+T361Aqo0h46EuMoobrwawA=="],
 
