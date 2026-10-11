@@ -1,0 +1,20 @@
+{
+	"format": 1,
+	"id": "k1ngop.no-idle",
+	"name": "No Idle",
+	"description": "Prevent status from idling when Discord is in the background.",
+	"author": "k1ng_op, amsryq",
+	"version": "1.0.0",
+	"icon": "StatusIdle",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
