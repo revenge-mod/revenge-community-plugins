@@ -1,0 +1,24 @@
+{
+  "format": 1,
+  "id": "contrabag.systememoji",
+  "name": "System Emoji",
+  "description": "System Emojis in messages, the emoji picker, and native reaction pills.",
+  "author": "contrabags <780075200950566933> (https://github.com/contrabag)",
+  "icon": "EmojiColdFaceIcon",
+  "version": "1.8.8",
+  "dependencies": {
+    "revenge.api": {
+      "version": ">=1 <2"
+    },
+    "discord": {
+      "version": "*"
+    }
+  },
+  "dist": {
+    "script": "index.js",
+    "android": {
+      "path": "plugin.jar",
+      "class": "contrabag.systememoji.SystemEmojiPlugin"
+    }
+  }
+}
