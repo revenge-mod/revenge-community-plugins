@@ -2,7 +2,7 @@
   "format": 1,
   "id": "contrabag.filesize",
   "name": "File Size on Picker",
-  "description": "Show the file sizes in the media picker, ported to Next",
+  "description": "Show the file sizes in the media picker",
   "author": "contrabags <780075200950566933> (https://github.com/contrabag)",
   "icon": "FileIcon",
   "version": "1.0.0",
