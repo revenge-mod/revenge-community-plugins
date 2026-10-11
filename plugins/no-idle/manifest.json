@@ -4,7 +4,7 @@
 	"name": "No Idle",
 	"description": "Prevent status from idling when Discord is in the background.",
 	"author": "k1ng_op <641266820187160576>, amsryq",
-	"version": "1.0.0 ",
+	"version": "1.0.0",
 	"icon": "StatusIdle",
 	"dependencies": {
 		"revenge.api": {
