@@ -1,0 +1,20 @@
+{
+	"format": 1,
+	"id": "k1ngop.instant-actions",
+	"name": "Instant Actions",
+	"description": "No more 'Are you sure?' Skips deletes, leaves, blocks, and other prompts. Toggle each one individually.",
+	"icon": "FlashIcon",
+	"author": "k1ng_op",
+	"version": "1.0",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
