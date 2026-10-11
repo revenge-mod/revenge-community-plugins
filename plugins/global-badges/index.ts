@@ -1,6 +1,9 @@
+import { NetInfo } from '@revenge-mod/externals/react-native-community'
+import { getJsonStorage } from '@revenge-mod/json-storage'
 import { getModules } from '@revenge-mod/modules/finders'
 import { withName } from '@revenge-mod/modules/finders/filters'
 import { before, instead } from '@revenge-mod/patcher'
+import { pluginStorageDirFor } from '@revenge-mod/plugins/constants'
 import { React, ReactJSXRuntime } from '@revenge-mod/react'
 import { useSyncExternalStore } from 'react'
 import {
@@ -10,11 +13,73 @@ import {
 	parseBadges,
 } from './badges'
 import SettingsComponent from './settings'
+import type { JsonStorage } from '@revenge-mod/json-storage'
+import type { AnyPlugin } from '@revenge-mod/plugins/_'
+import type { AnyObject } from '@revenge-mod/utils/types'
 import type { Settings } from './badges'
 
 const RefreshInterval = 30 * 60 * 1000
 
 type UseBadges = (user: { userId: string } | null) => unknown[]
+
+let controller: AbortController | undefined
+let active = true
+let fetching = false
+let timeout: ReturnType<typeof setTimeout> | undefined
+
+async function fetchBadges(
+	jsonStorage: JsonStorage<Settings>,
+	cacheStorage: JsonStorage<AnyObject>,
+): Promise<AnyObject> {
+	const requestController = new AbortController()
+	controller = requestController
+	timeout = setTimeout(() => requestController.abort(), 30_000)
+
+	const storage = await jsonStorage.get()
+	const netInfo = await NetInfo.fetch()
+
+	if (
+		// User said to not update on metered connections...
+		(netInfo.details?.isConnectionExpensive &&
+			!jsonStorage.cache?.updateOnMetered) ||
+		// or, cached data is still valid
+		Date.now() - (storage.lastFetched ?? 0) < RefreshInterval
+	) {
+		return await cacheStorage.get()
+	}
+
+	const response = await fetch('https://badges.equicord.org/users', {
+		signal: requestController.signal,
+		cache: 'no-cache',
+	})
+
+	if (!response.ok) throw new Error(`Badge service returned ${response.status}`)
+
+	const json = await response.json()
+	await cacheStorage.set(json)
+	return json
+}
+
+async function refresh(
+	jsonStorage: JsonStorage<Settings>,
+	cacheStorage: JsonStorage<AnyObject>,
+	plugin: AnyPlugin,
+	store: ReturnType<typeof createBadgeStore>,
+) {
+	if (fetching || !active) return
+	fetching = true
+
+	try {
+		const json = await fetchBadges(jsonStorage, cacheStorage)
+		const users = parseBadges(json)
+		if (active) store.setUsers(users)
+	} catch (error) {
+		if (active) plugin.reportError(error)
+	} finally {
+		clearTimeout(timeout)
+		fetching = false
+	}
+}
 
 export default plugin<{ jsonStorage: Settings }>({
 	jsonStorage: { load: true, default: DefaultSettings },
@@ -23,11 +88,12 @@ export default plugin<{ jsonStorage: Settings }>({
 			plugin.requireReload()
 			return
 		}
+
+		const cacheStorage = getJsonStorage(
+			`${pluginStorageDirFor(plugin.manifest.id)}/cache.json`,
+		)
+
 		const store = createBadgeStore()
-		let controller: AbortController | undefined
-		let active = true
-		let loading = false
-		let timeout: ReturnType<typeof setTimeout> | undefined
 
 		const syncSettings = () => {
 			const value = jsonStorage.cache
@@ -41,34 +107,12 @@ export default plugin<{ jsonStorage: Settings }>({
 			})
 		}
 
-		async function refresh() {
-			if (loading || !active) return
-			loading = true
-			const requestController = new AbortController()
-			controller = requestController
-			timeout = setTimeout(() => requestController.abort(), 30_000)
-			try {
-				const response = await fetch('https://badges.equicord.org/users', {
-					cache: 'no-cache',
-					signal: requestController.signal,
-				})
-				if (!response.ok)
-					throw new Error(`Badge service returned ${response.status}`)
-				const users = parseBadges(await response.json())
-				if (active) store.setUsers(users)
-			} catch (error) {
-				if (active) plugin.reportError(error)
-			} finally {
-				clearTimeout(timeout)
-				loading = false
-			}
-		}
-
 		cleanup(() => {
 			active = false
 			controller?.abort()
 			clearTimeout(timeout)
 		})
+
 		syncSettings()
 		cleanup(jsonStorage.subscribe(syncSettings))
 
@@ -117,9 +161,10 @@ export default plugin<{ jsonStorage: Settings }>({
 			before(React, 'createElement', patchBadgeProps),
 		)
 
-		refresh()
-		const interval = setInterval(refresh, RefreshInterval)
-		cleanup(() => clearInterval(interval))
+		refresh(jsonStorage, cacheStorage, plugin, store).then(() => {
+			const interval = setInterval(refresh, RefreshInterval)
+			cleanup(() => clearInterval(interval))
+		})
 	},
 	stop({ plugin }) {
 		plugin.requireReload()
