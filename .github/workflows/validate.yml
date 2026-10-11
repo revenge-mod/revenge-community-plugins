@@ -18,6 +18,9 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -31,6 +34,8 @@ jobs:
 
       - name: Build all plugins
         run: ./gradlew --no-daemon packageAllPlugins
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate index from built artifacts
         run: |
@@ -39,3 +44,18 @@ jobs:
             --base-url https://revenge.local \
             --out /tmp/index.json
           cat /tmp/index.json
+
+      - name: Upload built plugins
+        uses: actions/upload-artifact@v7
+        with:
+          name: plugins
+          path: build/dist/*.zip
+          if-no-files-found: warn
+
+      - name: Upload generated index
+        uses: actions/upload-artifact@v7
+        with:
+          name: index
+          path: /tmp/index.json
+          if-no-files-found: error
+          archive: false
