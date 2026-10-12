@@ -8,7 +8,7 @@
 		"Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")"
 	],
 	"icon": "AwardIcon",
-	"version": "1.0.4",
+	"version": "1.0.1",
 	"dependencies": {
 		"revenge.api": { "version": ">=1 <2" },
 		"discord": { "version": "*" }
