@@ -1,4 +1,3 @@
-import { NetInfo } from '@revenge-mod/externals/react-native-community'
 import { getJsonStorage } from '@revenge-mod/json-storage'
 import { getModules } from '@revenge-mod/modules/finders'
 import { withName } from '@revenge-mod/modules/finders/filters'
@@ -14,7 +13,7 @@ import {
 } from './badges'
 import SettingsComponent from './settings'
 import type { JsonStorage } from '@revenge-mod/json-storage'
-import type { AnyPlugin } from '@revenge-mod/plugins/_'
+import type { PluginApi } from '@revenge-mod/plugins/types'
 import type { AnyObject } from '@revenge-mod/utils/types'
 import type { Settings } from './badges'
 
@@ -36,17 +35,17 @@ async function fetchBadges(
 	timeout = setTimeout(() => requestController.abort(), 30_000)
 
 	const storage = await jsonStorage.get()
-	const netInfo = await NetInfo.fetch()
-
-	if (
-		// User said to not update on metered connections...
-		(netInfo.details?.isConnectionExpensive &&
-			!jsonStorage.cache?.updateOnMetered) ||
-		// or, cached data is still valid
-		Date.now() - (storage.lastFetched ?? 0) < RefreshInterval
-	) {
-		return await cacheStorage.get()
+	let cached: AnyObject | undefined
+	try {
+		const json = await cacheStorage.get()
+		parseBadges(json)
+		cached = json
+	} catch {
+		// An unreadable or outdated cache must not prevent a fresh request.
 	}
+
+	if (cached && Date.now() - (storage.lastFetched ?? 0) < RefreshInterval)
+		return cached
 
 	const response = await fetch('https://badges.equicord.org/users', {
 		signal: requestController.signal,
@@ -56,14 +55,16 @@ async function fetchBadges(
 	if (!response.ok) throw new Error(`Badge service returned ${response.status}`)
 
 	const json = await response.json()
-	await cacheStorage.set(json)
+	parseBadges(json)
+	await cacheStorage.set(json, true)
+	await jsonStorage.set({ lastFetched: Date.now() })
 	return json
 }
 
 async function refresh(
 	jsonStorage: JsonStorage<Settings>,
 	cacheStorage: JsonStorage<AnyObject>,
-	plugin: AnyPlugin,
+	plugin: PluginApi<{ jsonStorage: Settings }>['plugin'],
 	store: ReturnType<typeof createBadgeStore>,
 ) {
 	if (fetching || !active) return
@@ -161,10 +162,10 @@ export default plugin<{ jsonStorage: Settings }>({
 			before(React, 'createElement', patchBadgeProps),
 		)
 
-		refresh(jsonStorage, cacheStorage, plugin, store).then(() => {
-			const interval = setInterval(refresh, RefreshInterval)
-			cleanup(() => clearInterval(interval))
-		})
+		const update = () => refresh(jsonStorage, cacheStorage, plugin, store)
+		update()
+		const interval = setInterval(update, RefreshInterval)
+		cleanup(() => clearInterval(interval))
 	},
 	stop({ plugin }) {
 		plugin.requireReload()

@@ -37,11 +37,6 @@ export default function SettingsComponent({
 						value={settings.left ?? false}
 						onValueChange={left => storage.set({ left })}
 					/>
-					<TableSwitchRow
-						label="Update badges on metered connections"
-						value={settings.updateOnMetered ?? false}
-						onValueChange={updateOnMetered => storage.set({ updateOnMetered })}
-					/>
 				</TableRowGroup>
 				<TableRadioGroup
 					title="Client names"

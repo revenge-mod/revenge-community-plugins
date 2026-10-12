@@ -23,7 +23,6 @@ export type ModStyle = 'none' | 'prefix' | 'suffix'
 
 export interface Settings {
 	left: boolean
-	updateOnMetered?: boolean
 	lastFetched?: number
 	showModStyle: ModStyle
 	providers: Partial<Record<keyof typeof Providers, boolean>>
