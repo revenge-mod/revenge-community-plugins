@@ -1,3 +1,4 @@
+import { NetInfo } from '@revenge-mod/externals/react-native-community'
 import { getJsonStorage } from '@revenge-mod/json-storage'
 import { getModules } from '@revenge-mod/modules/finders'
 import { withName } from '@revenge-mod/modules/finders/filters'
@@ -35,6 +36,7 @@ async function fetchBadges(
 	timeout = setTimeout(() => requestController.abort(), 30_000)
 
 	const storage = await jsonStorage.get()
+	const netInfo = await NetInfo.fetch()
 	let cached: AnyObject | undefined
 	try {
 		const json = await cacheStorage.get()
@@ -44,6 +46,8 @@ async function fetchBadges(
 		// An unreadable or outdated cache must not prevent a fresh request.
 	}
 
+	if (netInfo.details?.isConnectionExpensive && !storage.updateOnMetered)
+		return cached ?? { users: {} }
 	if (cached && Date.now() - (storage.lastFetched ?? 0) < RefreshInterval)
 		return cached
 
@@ -115,7 +119,13 @@ export default plugin<{ jsonStorage: Settings }>({
 		})
 
 		syncSettings()
-		cleanup(jsonStorage.subscribe(syncSettings))
+		cleanup(
+			jsonStorage.subscribe(update => {
+				syncSettings()
+				if ('updateOnMetered' in update)
+					void refresh(jsonStorage, cacheStorage, plugin, store)
+			}),
+		)
 
 		cleanup(
 			getModules(

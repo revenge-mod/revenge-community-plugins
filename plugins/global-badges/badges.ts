@@ -12,7 +12,6 @@ export const Providers = {
 	paicord: 'Paicord',
 	record: 'ReCord',
 	replugged: 'Replugged',
-	revenge: 'Revenge',
 	reviewdb: 'ReviewDB',
 	velocity: 'Velocity',
 	vencord: 'Vencord',
@@ -23,6 +22,7 @@ export type ModStyle = 'none' | 'prefix' | 'suffix'
 
 export interface Settings {
 	left: boolean
+	updateOnMetered?: boolean
 	lastFetched?: number
 	showModStyle: ModStyle
 	providers: Partial<Record<keyof typeof Providers, boolean>>
@@ -69,7 +69,10 @@ export function parseBadges(value: unknown): Map<string, Badge[]> {
 	const users = new Map<string, Badge[]>()
 	for (const [userId, badges] of Object.entries(value.users)) {
 		if (!Array.isArray(badges)) continue
-		const valid = badges.filter(isBadge)
+		const valid = badges.filter(
+			(badge): badge is Badge =>
+				isBadge(badge) && badge.mod.toLowerCase() !== 'revenge',
+		)
 		if (valid.length) users.set(userId, valid)
 	}
 	return users
