@@ -1,0 +1,15 @@
+{
+	"format": 1,
+	"id": "revenge-next.better-you-bar",
+	"name": "BetterYouBar",
+	"description": "Adds Favorites and Settings shortcuts to the You bar. Based on Rain's BetterYouBar.",
+	"author": "j <1356632712861192242>",
+	"contributors": ["Benjii <463702169443368970>"],
+	"icon": "StarIcon",
+	"version": "1.0.4",
+	"dependencies": {
+		"revenge.api": { "version": ">=1 <2" },
+		"discord": { "version": "*" }
+	},
+	"dist": { "script": "index.js" }
+}
