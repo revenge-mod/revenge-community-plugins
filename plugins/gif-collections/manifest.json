@@ -1,0 +1,24 @@
+{
+	"format": 1,
+	"id": "revenge-next.gif-collections",
+	"name": "GIF Collections",
+	"description": "Organise GIFs into collections, with portable backups and optional cloud sync.",
+	"author": "Benjii <463702169443368970>",
+	"icon": "FolderIcon",
+	"version": "1.0.2",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1.1.0 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js",
+		"android": {
+			"path": "plugin.jar",
+			"class": "com.benjii.gifcollections.GifCollections"
+		}
+	}
+}
