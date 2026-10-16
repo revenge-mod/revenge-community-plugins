@@ -1,0 +1,20 @@
+{
+	"format": 1,
+	"id": "revenge-next.quoter",
+	"name": "Quoter",
+	"description": "Create quote images from messages.",
+	"author": "Benjii <463702169443368970>",
+	"icon": "QuoteIcon",
+	"version": "1.2.0",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
