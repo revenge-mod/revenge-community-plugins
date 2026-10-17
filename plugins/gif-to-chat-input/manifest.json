@@ -1,0 +1,15 @@
+{
+	"format": 1,
+	"id": "accentaro.gif-to-chat-input",
+	"name": "GIF to Chat Input",
+	"description": "Prevents GIFs from auto-sending from the picker and holds them in the chatbox.",
+	"author": "j <1356632712861192242>",
+	"contributors": ["Benjii <463702169443368970>"],
+	"icon": "GifIcon",
+	"version": "1.0.0",
+	"dependencies": {
+		"revenge.api": { "version": ">=1 <2" },
+		"discord": { "version": "*" }
+	},
+	"dist": { "script": "index.js" }
+}
