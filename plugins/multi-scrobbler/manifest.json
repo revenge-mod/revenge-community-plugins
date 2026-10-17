@@ -1,0 +1,21 @@
+{
+	"format": 1,
+	"id": "dev.kmmiio99o.multi-scrobbler",
+	"name": "Multi Scrobbler",
+	"description": "Show off your music status from Last.fm, Libre.fm, or ListenBrainz on your Discord profile with comprehensive console logging.",
+	"author": "kmmiio99o",
+	"icon": "MusicIcon",
+	"version": "1.3.0",
+	"dependencies": {
+		"revenge.api": { "version": ">=1" },
+		"discord": { "version": "*" },
+		"dev.kmmiio99o.toast.api": { "version": ">=1.0.1" }
+	},
+	"dist": {
+		"script": "index.js",
+		"android": {
+			"path": "plugin.jar",
+			"class": "dev.kmmiio99o.multiscrobbler.MultiScrobblerNative"
+		}
+	}
+}
