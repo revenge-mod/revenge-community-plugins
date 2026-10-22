@@ -30,6 +30,33 @@
         }
       }
     },
+    "dev.benjii.gtci": {
+      "name": "GIF to Chat Input",
+      "description": "Prevents GIFs from auto-sending from the picker and holds them in the chatbox.",
+      "author": "j <1356632712861192242>",
+      "contributors": [
+        "Benjii <463702169443368970>"
+      ],
+      "icon": "GifIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/dev.benjii.gtci@1.0.0.zip",
+          "sha256": "7d398a5b5c1758f0ec9db8400bba3654e02186701daf783ce1af28fe7ce9d24e",
+          "size": 852,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
     "k1ngop.anonymous-file-names": {
       "name": "Anonymous File Names",
       "description": "Randomizes file names before you upload them.",
