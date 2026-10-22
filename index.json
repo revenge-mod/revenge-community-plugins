@@ -472,6 +472,54 @@
         }
       }
     },
+    "palmdevs.message-logger": {
+      "name": "Message Logger",
+      "description": "Keep deleted messages, attachments, and edit history.",
+      "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
+      "icon": "ChatXIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.message-logger@1.0.0.zip",
+          "sha256": "2e6f6ab31d5a7eb1ba5a466c53c869ced45c62b73de9da3a98627b49e69b1573",
+          "size": 18569,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": ">=352.2"
+            }
+          }
+        }
+      }
+    },
+    "palmdevs.reactions-sheet-fix": {
+      "name": "Reactions Sheet Fix",
+      "description": "Fixes the reactions sheet loading forever when users reacted after it was first opened.",
+      "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
+      "icon": "WrenchIcon",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.reactions-sheet-fix@1.0.0.zip",
+          "sha256": "20939f4ec4b039fa0939782e0ce3cd7d7f98451386134a678404e9020f44d5bd",
+          "size": 1788,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
     "palmdevs.shiki-codeblocks": {
       "name": "Shiki Codeblocks",
       "description": "Highlighted and selectable code blocks in chat with Shiki and custom themes.",
@@ -591,13 +639,26 @@
       "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
       "icon": "KeyboardIcon",
       "channels": {
-        "latest": "1.0.0"
+        "latest": "1.1.0"
       },
       "versions": {
         "1.0.0": {
           "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.silent-typing@1.0.0.zip",
           "sha256": "13a3b04fb150dccb694cac2285d3263cb50952156633eb462e208254a9faf25e",
           "size": 704,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.1.0": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.silent-typing@1.1.0.zip",
+          "sha256": "45128a8c1fbdb27f83d4f7349a1476d877fabccee0144df4bbcd77ee59d1caf6",
+          "size": 1993,
           "dependencies": {
             "revenge.api": {
               "version": ">=1 <2"
