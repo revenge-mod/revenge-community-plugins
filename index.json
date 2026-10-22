@@ -1192,13 +1192,13 @@
     "wolfie.global-badges": {
       "name": "Global Badges",
       "description": "Show profile badges from other Discord clients and BadgeVault.",
-      "author": "Wolfie <347096063569559553>",
+      "author": "Wolfie <347096063569559553> (https://wolfies.org/ \"Website\") (https://github.com/Wolfkid200444 \"GitHub\")",
       "contributors": [
         "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")"
       ],
       "icon": "AwardIcon",
       "channels": {
-        "latest": "1.0.1"
+        "latest": "1.0.2"
       },
       "versions": {
         "1.0.0": {
@@ -1224,6 +1224,19 @@
             },
             "discord": {
               "version": "*"
+            }
+          }
+        },
+        "1.0.2": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/wolfie.global-badges@1.0.2.zip",
+          "sha256": "6b76ccc28c2c4c024cc9cf770fd470a3a9e646f45480b21b55ef06f71842223a",
+          "size": 4348,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": ">=351.1"
             }
           }
         }
