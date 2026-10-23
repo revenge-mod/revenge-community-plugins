@@ -1,0 +1,23 @@
+{
+	"format": 1,
+	"id": "mxtiy.custom-pfp-banner",
+	"name": "Custom PFP & Banner",
+	"description": "Custom profile backgrounds via USRBG and custom avatars via UserPFP. Enable either or both.",
+	"author": "NoReplyUI5 <1053918356375351386> (https://github.com/NoReplyUI5 \"GitHub\")",
+	"contributors": [
+		"k1ng_op <641266820187160576> (https://github.com/k1ng0p \"GitHub\")"
+	],
+	"icon": "NitroWheelIcon",
+	"version": "1.0.0",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
