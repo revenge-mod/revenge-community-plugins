@@ -309,7 +309,7 @@
       ],
       "icon": "NitroWheelIcon",
       "channels": {
-        "latest": "1.0.4"
+        "latest": "1.0.5"
       },
       "versions": {
         "1.0.4": {
@@ -321,6 +321,45 @@
               "version": ">=1 <2"
             },
             "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.5": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.fake-nitro@1.0.5.zip",
+          "sha256": "f87b1e9011056f896487253e40961b9b54366c5c55db9f3b2f48e610234df7c5",
+          "size": 5660,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        }
+      }
+    },
+    "palmdevs.google-sans-flex": {
+      "name": "Google Sans Flex",
+      "description": "Replaces Discord's gg sans with Google Sans Flex.",
+      "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
+      "channels": {
+        "latest": "1.0.0"
+      },
+      "versions": {
+        "1.0.0": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.google-sans-flex@1.0.0.zip",
+          "sha256": "76d06b6b5134cfc5c1d931027f19a63701edcc5265611997eedd35458d2ee144",
+          "size": 2424237,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            },
+            "revenge.api.themes": {
               "version": "*"
             }
           }
@@ -357,12 +396,25 @@
       "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
       "icon": "EyeIcon",
       "channels": {
-        "latest": "1.0.0"
+        "latest": "1.0.1"
       },
       "versions": {
         "1.0.0": {
           "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.join-as-lurker@1.0.0.zip",
           "sha256": "f572802d0f4b516de0dbbc650111d3b8c05cbfeebec9e9c343c5ab19af933d82",
+          "size": 1236,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.1": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.join-as-lurker@1.0.1.zip",
+          "sha256": "fb4444c35430d328ae7c21f64eff34d7a1e50a57e5fa46bdb78e2ce92add0469",
           "size": 1236,
           "dependencies": {
             "revenge.api": {
@@ -542,13 +594,26 @@
       "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
       "icon": "WrenchIcon",
       "channels": {
-        "latest": "1.0.0"
+        "latest": "1.0.1"
       },
       "versions": {
         "1.0.0": {
           "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.reactions-sheet-fix@1.0.0.zip",
           "sha256": "20939f4ec4b039fa0939782e0ce3cd7d7f98451386134a678404e9020f44d5bd",
           "size": 1788,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.1": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.reactions-sheet-fix@1.0.1.zip",
+          "sha256": "898a9b83805478adebb0d043ae89c68fc64aa6889f7fc846c5f550c75402b55c",
+          "size": 1790,
           "dependencies": {
             "revenge.api": {
               "version": ">=1 <2"
@@ -642,7 +707,7 @@
       "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
       "icon": "ClockWarningIcon",
       "channels": {
-        "latest": "1.0.1"
+        "latest": "1.0.2"
       },
       "versions": {
         "1.0.0": {
@@ -662,6 +727,19 @@
           "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.show-timeout-duration@1.0.1.zip",
           "sha256": "4787ae4eabc1a692dcd675d3bdafbad493111f034549e9766b590e087dff9b16",
           "size": 21017,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": ">=352.2"
+            }
+          }
+        },
+        "1.0.2": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.show-timeout-duration@1.0.2.zip",
+          "sha256": "c5969e23a53a8f0b935364ffbe079ba662b5ac8e5909147dfb15ca57ddbcfc51",
+          "size": 21019,
           "dependencies": {
             "revenge.api": {
               "version": ">=1.2.1 <2"
@@ -743,7 +821,7 @@
       "author": "Palm <629368283354628116> (https://github.com/sponsors/PalmDevs \"Donations\") (https://palmdevs.me \"Website\") (https://github.com/PalmDevs \"GitHub\")",
       "icon": "ReactionIcon",
       "channels": {
-        "latest": "1.0.1"
+        "latest": "1.0.2"
       },
       "versions": {
         "1.0.0": {
@@ -762,6 +840,19 @@
         "1.0.1": {
           "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.who-reacted@1.0.1.zip",
           "sha256": "eeefbaa455433aa9727eb16a20938375554b93ab4540b894ca13a5225bdf7af5",
+          "size": 28153,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1.2.1 <2"
+            },
+            "discord": {
+              "version": ">=352.2"
+            }
+          }
+        },
+        "1.0.2": {
+          "url": "https://revenge-mod.github.io/revenge-community-plugins/pool/palmdevs.who-reacted@1.0.2.zip",
+          "sha256": "13b1c90e176a1ec769daec7fb341bebad539a27188e314bd85d63a99ae334d34",
           "size": 28153,
           "dependencies": {
             "revenge.api": {
