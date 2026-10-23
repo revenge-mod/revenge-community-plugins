@@ -1,0 +1,21 @@
+{
+	"format": 1,
+	"id": "liver.permission-viewer",
+	"name": "Permission Viewer",
+	"description": "Inspect permissions of servers, channels, roles, and members.",
+	"author": "Livie <755950362342457384>",
+	"contributors": ["tralwdwdd"],
+	"icon": "ShieldUserIcon",
+	"version": "1.0.0",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
