@@ -1,0 +1,6 @@
+{
+	"name": "@mudrhiod/revenge-solar-iconpack",
+	"devDependencies": {
+		"@revenge-mod/themes-api": "workspace:*"
+	}
+}

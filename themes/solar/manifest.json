@@ -1,0 +1,22 @@
+{
+	"format": 1,
+	"id": "mudrhiod.solar",
+	"name": "Solar",
+	"description": "Replaces Discord's icons with icons from the Solar iconset.",
+	"author": "Mudrhiod <807170846497570848>",
+	"version": "1.0.0",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		},
+		"revenge.api.themes": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
