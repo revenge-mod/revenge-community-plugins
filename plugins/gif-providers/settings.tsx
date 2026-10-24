@@ -1,9 +1,10 @@
 import Page from '@revenge-mod/components/Page'
 import { Design } from '@revenge-mod/discord/design'
-import { DefaultGridQuality, GridQualities } from '.'
+import { ProviderSelect } from './picker'
+import { configureStorage, defaults, GridQualities } from './storage'
 import type { PluginSettingsComponent } from '@revenge-mod/plugins/types'
 import type { ComponentProps } from 'react'
-import type { GridQuality, Settings } from '.'
+import type { GridQuality, GifProvidersSettings as Settings } from './storage'
 
 const { TableRadioGroup, TableRadioRow } = Design
 
@@ -32,13 +33,17 @@ type SettingsComponentProps = ComponentProps<
 export default function SettingsComponent({
 	api: { jsonStorage: storage },
 }: SettingsComponentProps) {
+	configureStorage(storage)
 	const { gridQuality } = storage.use() ?? {}
 
 	return (
 		<Page>
+			<Design.TableRowGroup>
+				<ProviderSelect />
+			</Design.TableRowGroup>
 			<TableRadioGroup
 				title="GIF Quality"
-				defaultValue={gridQuality ?? DefaultGridQuality}
+				value={gridQuality ?? defaults.gridQuality}
 				onChange={(gridQuality: GridQuality) => storage.set({ gridQuality })}
 			>
 				{GridQualities.map(quality => (
