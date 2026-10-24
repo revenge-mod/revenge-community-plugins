@@ -1,0 +1,20 @@
+{
+	"format": 1,
+	"id": "k1ngop.valid-user",
+	"name": "ValidUser",
+	"description": "Fixes unresolved user mentions like @unknown-user to a normal clickable mention.",
+	"author": "k1ng_op <641266820187160576> (https://github.com/k1ng0p \"GitHub\")",
+	"version": "1.0.0",
+	"icon": "ic_mention_24px",
+	"dependencies": {
+		"revenge.api": {
+			"version": ">=1 <2"
+		},
+		"discord": {
+			"version": "*"
+		}
+	},
+	"dist": {
+		"script": "index.js"
+	}
+}
