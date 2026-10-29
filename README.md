@@ -30,6 +30,10 @@
 
 This repository contains plugins for Revenge, maintained by the Revenge community.
 
+> [!IMPORTANT]  
+> **Revenge Next and its community plugins is now discontinued.** Thank you to all the people who've tried them out.  
+> Works have now been moved to [Valenced](https://github.com/Valenced/valenced) and [Valenced Community Plugins](https://github.com/Valenced/valenced-community-plugins). A brand new Discord mobile client modification.
+
 ## ❓ About
 
 Revenge is a client modification for Discord mobile, allowing you to customize your Discord experience with plugins that can extend Discord's functionality, customize its appearance, and enable experimental features.
